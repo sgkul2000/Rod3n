@@ -220,7 +220,7 @@ function help(message, args, invalidCommand) {
 		`;
         }
       } else {
-        title = "Shreesh Jr. instruction manual";
+        title = "Rod3n instruction manual";
         description = `
 	  	Shreesh Jr. is a All in one bakchod bot.
 		Invoke it using the following commands with the prefix "_":
