@@ -222,7 +222,7 @@ function help(message, args, invalidCommand) {
       } else {
         title = "Rod3n instruction manual";
         description = `
-	  	Shreesh Jr. is a All in one bakchod bot.
+	  	Rod3n is a All in one bakchod bot.
 		Invoke it using the following commands with the prefix "_":
 			help
 			hello
