@@ -15,22 +15,23 @@ dotenv.config();
 client.on("message", async (message) => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) {
-    if (
-      message.mentions &&
-      message.mentions.members.first().id === "758658107756380201"
-    ) {
-      message.react("🇱");
-      message.react("🇴");
-      message.react("🇩");
-      message.react("🇺");
-      // message.react("🇬");
-      // message.react("🇦");
-      // message.react("🇳");
-      // message.react("🇩");
-      // message.react("🇲");
-      // message.react("🇷");
-      // message.react("🇦");
-      return;
+    try {
+      if (message.mentions && message.mentions.has("758658107756380201")) {
+        message.react("🇱");
+        message.react("🇴");
+        message.react("🇩");
+        message.react("🇺");
+        // message.react("🇬");
+        // message.react("🇦");
+        // message.react("🇳");
+        // message.react("🇩");
+        // message.react("🇲");
+        // message.react("🇷");
+        // message.react("🇦");
+        return;
+      }
+    } catch (err) {
+      console.error(err);
     }
     return;
   }

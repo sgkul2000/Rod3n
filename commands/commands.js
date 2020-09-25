@@ -3,20 +3,42 @@ const Discord = require("discord.js");
 
 const hellojson = require("../hello.json");
 
-function getHelloPhrase() {
-  return hellojson.greetings[
-    Math.floor(Math.random() * hellojson.greetings.length)
-  ];
+function getHelloPhrase(type) {
+  console.log(type, hellojson[type]);
+  return hellojson[type][Math.floor(Math.random() * hellojson[type].length)];
 }
 
-function hello(message, args) {
-  message
-    .delete()
-    .then(async (msg) => {
-      return message.channel.send(`${getHelloPhrase()} ${args[0]}`);
+function MissingPermissions(message) {
+  message.author
+    .send(
+      `**Permission missing.**
+      i must be able to *Read/send/manage* messages.`
+    )
+    .then(() => {
+      console.log("sent");
     })
     .catch((err) => {
       console.error(err);
+    });
+}
+
+function errorHandler(err, message) {
+  console.error(err);
+  if (err.message === "Missing Permissions") {
+    MissingPermissions(message);
+  }
+}
+
+function hello(message, args) {
+  var type = args[1] && args[1].toLowerCase() === "desi" ? "desi" : "default";
+  message
+    .delete()
+    .then(async (msg) => {
+      var greeting = getHelloPhrase(type);
+      return message.channel.send(`${greeting} ${args[0]}`);
+    })
+    .catch((err) => {
+      errorHandler(err, message);
     });
 }
 
@@ -51,12 +73,11 @@ function insult(message, args) {
           }
         })
         .catch((err) => {
-          console.error(err);
+          errorHandler(err, message);
         });
     })
     .catch((err) => {
-      console.error(err);
-      console.log("message delete failed");
+      errorHandler(err, message);
     });
 }
 
@@ -77,8 +98,7 @@ function fuckoff(message, args) {
         });
     })
     .catch((err) => {
-      console.error(err);
-      console.log("message delete failed");
+      errorHandler(err, message);
     });
 }
 
@@ -109,7 +129,7 @@ function joke(message, args) {
       }
     })
     .catch((err) => {
-      console.error(err);
+      errorHandler(err, message);
     });
 }
 
@@ -142,23 +162,23 @@ function amongus(message, args, client) {
                       console.log(successful);
                     })
                     .catch((err) => {
-                      console.error();
+                      errorHandler(err, message);
                     });
                 })
                 .catch((err) => {
-                  console.error(err);
+                  errorHandler(err, message);
                 });
             })
             .catch((err) => {
-              console.error(err);
+              errorHandler(err, message);
             });
         })
         .catch((err) => {
-          cosnsole.error(err);
+          errorHandler(err, message);
         });
     })
     .catch((err) => {
-      console.error(err);
+      errorHandler(err, message);
     });
 }
 
@@ -250,11 +270,11 @@ function help(message, args, invalidCommand) {
           });
         })
         .catch((err) => {
-          console.error(err);
+          errorHandler(err, message);
         });
     })
     .catch((err) => {
-      console.error(err);
+      errorHandler(err, message);
     });
 }
 
