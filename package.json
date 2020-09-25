@@ -1,0 +1,21 @@
+{
+  "name": "shreeshjunior",
+  "version": "1.0.0",
+  "description": "A bot created by shreesh",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Shreesh Kulkarni - sgkul2000@gmail.com",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "discord.js": "^12.3.1",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  }
+}
