@@ -35,7 +35,9 @@ function hello(message, args) {
     .delete()
     .then(async (msg) => {
       var greeting = getHelloPhrase(type);
-      return message.channel.send(`${greeting} ${args[0]}`);
+      return message.channel.send(`${greeting} ${args[0]}`, {
+        tts: type === "default" ? true : false,
+      });
     })
     .catch((err) => {
       errorHandler(err, message);
