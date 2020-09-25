@@ -1,9 +1,16 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
 const axios = require("axios");
 const client = new Discord.Client();
 const commands = require("./commands/commands");
 const prefix = "_";
+
+const express = require("express");
+const BodyParser = require("body-parser");
+const cors = require("cors");
+const path = require("path");
+const morgan = require("morgan");
+const dotenv = require("dotenv");
+dotenv.config();
 
 client.on("message", async (message) => {
   if (message.author.bot) return;
@@ -79,13 +86,7 @@ client.on("ready", () => {
     });
 });
 
-client.login(config.BOT_TOKEN);
-
-const express = require("express");
-const BodyParser = require("body-parser");
-const cors = require("cors");
-const path = require("path");
-const morgan = require("morgan");
+client.login(process.env.BOT_TOKEN);
 
 const app = express();
 
