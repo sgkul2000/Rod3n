@@ -4,7 +4,6 @@ const Discord = require("discord.js");
 const hellojson = require("../hello.json");
 
 function getHelloPhrase(type) {
-  console.log(type, hellojson[type]);
   return hellojson[type][Math.floor(Math.random() * hellojson[type].length)];
 }
 
@@ -107,7 +106,8 @@ function fuckoff(message, args) {
 function joke(message, args) {
   var url;
   if (args.length === 0) {
-    return message.channel.send("Parameters missing hai BC");
+    // return message.channel.send("Parameters missing hai BC");
+    url = "Any";
   }
   if (args[0].toLowerCase() === "any") {
     url = "Any";
