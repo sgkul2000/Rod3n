@@ -108,8 +108,7 @@ function joke(message, args) {
   if (args.length === 0) {
     // return message.channel.send("Parameters missing hai BC");
     url = "Any";
-  }
-  if (args[0].toLowerCase() === "any") {
+  } else if (args[0].toLowerCase() === "any") {
     url = "Any";
   } else {
     for (var i = 0; i < args.length; i++) {
