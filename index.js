@@ -108,9 +108,11 @@ app.get("/", (req, res) => {
 });
 
 // setting port
-port = process.env.PORT || 8000;
+// port = process.env.PORT || 8000;
 
 // establishing server
-app.listen(port, () => {
-  console.log(`Listening at port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening at port ${port}`);
+// });
+
+module.exports = app;
